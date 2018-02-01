@@ -112,7 +112,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRA-GK-Tfl">
                                 <rect key="frame" x="112" y="311" width="150" height="150"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="6ia-jQ-jqw"/>
                                     <constraint firstAttribute="height" constant="150" id="7pq-Wj-E47"/>
@@ -164,6 +164,7 @@
                         <barButtonItem key="backBarButtonItem" title="Dogs" id="8b0-Vn-X0v"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPhotoButton" destination="BRA-GK-Tfl" id="6Cy-09-dj2"/>
                         <outlet property="dogBreed" destination="V4c-Q3-bT9" id="xKp-rB-qfg"/>
                         <outlet property="dogName" destination="MnJ-um-6cb" id="QOd-yW-Iq4"/>
                         <outlet property="dogTreat" destination="hrx-eM-EZC" id="Ufs-o5-jri"/>
@@ -220,7 +221,16 @@
                                     <constraint firstAttribute="height" constant="40" id="ze1-oV-pCQ"/>
                                 </constraints>
                                 <state key="normal" title="Use this Photo"/>
+                                <connections>
+                                    <action selector="useThisPhotoPressed:" destination="fih-Gx-QXa" eventType="touchUpInside" id="pGh-7D-Ch2"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Image Selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYx-un-tKP">
+                                <rect key="frame" x="85" y="241" width="205.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -234,9 +244,11 @@
                             <constraint firstAttribute="trailing" secondItem="Mfc-oJ-gaS" secondAttribute="trailing" id="lDg-rh-ydR"/>
                             <constraint firstItem="Mfc-oJ-gaS" firstAttribute="leading" secondItem="yla-8A-uRT" secondAttribute="leading" id="p3I-tR-wY8"/>
                             <constraint firstItem="gUx-7c-yfw" firstAttribute="trailing" secondItem="PWn-bT-Hq0" secondAttribute="trailing" id="q5D-zJ-eYG"/>
+                            <constraint firstItem="zYx-un-tKP" firstAttribute="top" secondItem="sXf-97-H2A" secondAttribute="bottom" constant="177" id="rdS-o0-Bnq"/>
                             <constraint firstItem="gUx-7c-yfw" firstAttribute="leading" secondItem="PWn-bT-Hq0" secondAttribute="leading" id="rdh-fb-YnY"/>
                             <constraint firstItem="sXf-97-H2A" firstAttribute="trailing" secondItem="PWn-bT-Hq0" secondAttribute="trailing" id="tXc-g7-FYy"/>
                             <constraint firstItem="sXf-97-H2A" firstAttribute="leading" secondItem="PWn-bT-Hq0" secondAttribute="leading" id="tnj-Pr-fpO"/>
+                            <constraint firstItem="zYx-un-tKP" firstAttribute="centerX" secondItem="yla-8A-uRT" secondAttribute="centerX" id="ugM-2A-JBU"/>
                             <constraint firstItem="PWn-bT-Hq0" firstAttribute="trailing" secondItem="8Sf-hc-Sug" secondAttribute="trailing" constant="100" id="wx8-ci-QJz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PWn-bT-Hq0"/>
@@ -244,6 +256,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="imageStatusLabel" destination="zYx-un-tKP" id="Ovb-Iu-muS"/>
                         <outlet property="imageView" destination="gUx-7c-yfw" id="Cyv-Nm-MbG"/>
                     </connections>
                 </viewController>

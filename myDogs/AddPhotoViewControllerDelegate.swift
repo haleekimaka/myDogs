@@ -10,4 +10,6 @@ import UIKit
 
 protocol AddPhotoViewControllerDelegate: class {
     func cancelButtonPressed(by controller: AddPhotoViewController)
+    
+    func useThisPhotoButtonPressed(by controller: AddPhotoViewController, with image: UIImage)
 }

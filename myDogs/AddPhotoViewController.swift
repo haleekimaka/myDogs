@@ -15,15 +15,17 @@ class AddPhotoViewController: UIViewController, UINavigationControllerDelegate, 
     weak var delegate: AddPhotoViewControllerDelegate?
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet var cameraButton: UIBarButtonItem?
     
     var imagePickerController = UIImagePickerController()
     
-    var pickedImage = UIImage()
+    @IBOutlet weak var imageStatusLabel: UILabel!
+    
+    var pickedImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
+        imageStatusLabel.isHidden = false
 
     }
     
@@ -35,6 +37,13 @@ class AddPhotoViewController: UIViewController, UINavigationControllerDelegate, 
         delegate?.cancelButtonPressed(by: self)
     }
     
+    @IBAction func useThisPhotoPressed(_ sender: UIButton) {
+        if let image = pickedImage {
+          delegate?.useThisPhotoButtonPressed(by: self, with: image)
+        }
+        
+        
+    }
     @IBAction func didTouchPhotoLibraryButton(_ sender: Any) {
         let authStatus = PHPhotoLibrary.authorizationStatus()
         
@@ -85,12 +94,13 @@ class AddPhotoViewController: UIViewController, UINavigationControllerDelegate, 
         }
     }
     
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("picked image, or snapped photo")
         let newImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         pickedImage = newImage!
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.image = pickedImage
+        imageStatusLabel.isHidden = true
         dismiss(animated:true, completion: nil)
     }
     
