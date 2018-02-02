@@ -10,8 +10,10 @@
 		1502F1ED201FABCD00004669 /* AddDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F1EC201FABCD00004669 /* AddDogViewController.swift */; };
 		1502F1EF201FAD0100004669 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F1EE201FAD0100004669 /* AddPhotoViewController.swift */; };
 		1502F1F12021643300004669 /* AddPhotoViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F1F02021643300004669 /* AddPhotoViewControllerDelegate.swift */; };
+		158CF9462022A73700B6B822 /* AddDogViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158CF9452022A73700B6B822 /* AddDogViewControllerDelegate.swift */; };
+		158CF9482022D28100B6B822 /* DogCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158CF9472022D28100B6B822 /* DogCollectionViewController.swift */; };
+		158CF94A2023DF7100B6B822 /* DogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158CF9492023DF7100B6B822 /* DogCell.swift */; };
 		15AF09BC2016CF470059E6E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AF09BB2016CF470059E6E1 /* AppDelegate.swift */; };
-		15AF09BE2016CF470059E6E1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AF09BD2016CF470059E6E1 /* MainViewController.swift */; };
 		15AF09C12016CF470059E6E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15AF09BF2016CF470059E6E1 /* Main.storyboard */; };
 		15AF09C42016CF470059E6E1 /* myDogs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15AF09C22016CF470059E6E1 /* myDogs.xcdatamodeld */; };
 		15AF09C62016CF470059E6E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15AF09C52016CF470059E6E1 /* Assets.xcassets */; };
@@ -22,9 +24,11 @@
 		1502F1EC201FABCD00004669 /* AddDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDogViewController.swift; sourceTree = "<group>"; };
 		1502F1EE201FAD0100004669 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		1502F1F02021643300004669 /* AddPhotoViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewControllerDelegate.swift; sourceTree = "<group>"; };
+		158CF9452022A73700B6B822 /* AddDogViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDogViewControllerDelegate.swift; sourceTree = "<group>"; };
+		158CF9472022D28100B6B822 /* DogCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCollectionViewController.swift; sourceTree = "<group>"; };
+		158CF9492023DF7100B6B822 /* DogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCell.swift; sourceTree = "<group>"; };
 		15AF09B82016CF470059E6E1 /* myDogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myDogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15AF09BB2016CF470059E6E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		15AF09BD2016CF470059E6E1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		15AF09C02016CF470059E6E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		15AF09C32016CF470059E6E1 /* myDogs.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myDogs.xcdatamodel; sourceTree = "<group>"; };
 		15AF09C52016CF470059E6E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,8 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				15AF09BB2016CF470059E6E1 /* AppDelegate.swift */,
-				15AF09BD2016CF470059E6E1 /* MainViewController.swift */,
 				15AF09BF2016CF470059E6E1 /* Main.storyboard */,
+				158CF9492023DF7100B6B822 /* DogCell.swift */,
+				158CF9472022D28100B6B822 /* DogCollectionViewController.swift */,
+				158CF9452022A73700B6B822 /* AddDogViewControllerDelegate.swift */,
 				1502F1F02021643300004669 /* AddPhotoViewControllerDelegate.swift */,
 				1502F1EE201FAD0100004669 /* AddPhotoViewController.swift */,
 				1502F1EC201FABCD00004669 /* AddDogViewController.swift */,
@@ -148,11 +154,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15AF09BE2016CF470059E6E1 /* MainViewController.swift in Sources */,
 				15AF09BC2016CF470059E6E1 /* AppDelegate.swift in Sources */,
 				1502F1EF201FAD0100004669 /* AddPhotoViewController.swift in Sources */,
+				158CF94A2023DF7100B6B822 /* DogCell.swift in Sources */,
+				158CF9482022D28100B6B822 /* DogCollectionViewController.swift in Sources */,
 				15AF09C42016CF470059E6E1 /* myDogs.xcdatamodeld in Sources */,
 				1502F1F12021643300004669 /* AddPhotoViewControllerDelegate.swift in Sources */,
+				158CF9462022A73700B6B822 /* AddDogViewControllerDelegate.swift in Sources */,
 				1502F1ED201FABCD00004669 /* AddDogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

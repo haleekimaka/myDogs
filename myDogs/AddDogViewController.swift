@@ -11,20 +11,54 @@ import CoreData
 
 class AddDogViewController: UIViewController, AddPhotoViewControllerDelegate {
     
+    weak var delegate: AddDogViewControllerDelegate?
+    
+    @IBOutlet weak var viewLabel: UILabel!
+    @IBOutlet weak var requiredLabel: UILabel!
     @IBOutlet weak var dogName: UITextField!
     @IBOutlet weak var dogBreed: UITextField!
     @IBOutlet weak var dogTreat: UITextField!
     @IBOutlet weak var addPhotoButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    
     var pickedImage: UIImage?
+    var compressedImageData: Data!
+    var sentData: DogRecord!
+    var updating: Bool = false
+    
+    var indexPath: NSIndexPath!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        requiredLabel.isHidden = true
+        dogName.text = sentData?.name
+        dogBreed.text = sentData?.breed
+        dogTreat.text = sentData?.treat
+        
+        if let photo = sentData?.photo {
+            pickedImage = UIImage(data: photo)
+            compressedImageData = photo
+            addPhotoButton.setBackgroundImage(pickedImage, for: .normal)
+        }
+        if updating == true {
+            deleteButton.isHidden = false
+            addPhotoButton.setTitle("Change Photo", for: .normal)
+            viewLabel.text = "Edit Dog"
+        }
+        else {
+            deleteButton.isHidden = true
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func goBack(_ sender: UIBarButtonItem) {
+        updating = false
+        delegate?.cancelButtonPressed(by: self)
+        
+    }
     func cancelButtonPressed(by controller: AddPhotoViewController) {
         dismiss(animated: true, completion: nil)
     }
@@ -32,8 +66,7 @@ class AddDogViewController: UIViewController, AddPhotoViewControllerDelegate {
     func useThisPhotoButtonPressed(by controller: AddPhotoViewController, with image: UIImage) {
         pickedImage = image
         let compressedImage = resize(image)
-        addPhotoButton.setBackgroundImage(compressedImage, for: .normal)
-        print("set image in AddDogViewController")
+    addPhotoButton.setBackgroundImage(compressedImage, for: .normal)
         dismiss(animated: true, completion: nil)
     }
     
@@ -49,9 +82,35 @@ class AddDogViewController: UIViewController, AddPhotoViewControllerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let destination = segue.destination as! AddPhotoViewController
-        destination.delegate = self
+            destination.delegate = self
     }
+    
+    @IBAction func submitButtonPressed(_ sender: UIButton) {
+        if dogName.text == "" {
+            requiredLabel.isHidden = false
+        }
+        else if dogBreed.text == "" {
+            requiredLabel.isHidden = false
+        }
+        else if dogTreat.text == "" {
+            requiredLabel.isHidden = false
+        }
+        else if compressedImageData == nil {
+            requiredLabel.isHidden = false
+        }
+        else {
+            delegate?.itemSaved(by: self, with: dogName.text!, breed: dogBreed.text!, treat: dogTreat.text!, photo: compressedImageData, update: updating, at: indexPath )
+        }
+        updating = false
+    }
+    
+    @IBAction func deleteButtonPressed(_ sender: UIButton) {
+        
+        delegate?.deleteRecord(by: self, with: indexPath)
+    }
+    
     
     func resize(_ image: UIImage) -> UIImage {
         var actualHeight = Float(image.size.height)
@@ -86,6 +145,7 @@ class AddDogViewController: UIViewController, AddPhotoViewControllerDelegate {
         let img = UIGraphicsGetImageFromCurrentImageContext()
         let imageData = UIImageJPEGRepresentation(img!, compressionQuality)
         UIGraphicsEndImageContext()
+        compressedImageData = imageData
         return UIImage(data: imageData!) ?? UIImage()
     }
     
